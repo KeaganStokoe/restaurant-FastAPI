@@ -1,0 +1,129 @@
+[
+  {
+    "name": "mazel tov",
+    "description": "mazel tov is an open hearted cultural space in the city's center, a streamlined and comforting place focusing on gastronomy in the 7th district, in the middle of the historically jewish quarter. our middle eastern urban garden awaits its quests seven days a week from noon until midnight: mazel tov! ps: please note that our restaurant is not a kosher restaurant. hope to see you soon, mazel tov team",
+    "address_string": "akacfa utca 47., budapest 1073 hungary",
+    "website": "http://mazeltov.hu",
+    "rating": "4.0",
+    "phone": "+36 70 626 4280",
+    "longitude": "19.06584",
+    "latitude": "47.500423",
+    "cuisines": [
+      "mediterranean",
+      "healthy",
+      "middle_eastern",
+      "israeli"
+    ],
+    "category": "restaurant",
+    "hours": [
+      "Monday: 12:00 - 00:00",
+      "Tuesday: 12:00 - 00:00",
+      "Wednesday: 12:00 - 00:00",
+      "Thursday: 12:00 - 00:00",
+      "Friday: 12:00 - 00:00",
+      "Saturday: 12:00 - 00:00",
+      "Sunday: 12:00 - 00:00"
+    ]
+  },
+  {
+    "name": "twentysix",
+    "description": "twentysix budapest is the first of its kind, a cozy urban jungle and feel-good hub for all the nature and gastro friends located in the real heart of budapest with 4 elements. garden\u00b0 is a nutritious, soulful mediterranean restaurant. shop\u00b0 is our zero waste coffee & shop, an eco-friendly gourmet delicates. studio\u00b0 where you can enjoy every day our yoga classes. house\u00b0 brings a unique concept of kitchen workshops and space for tailored events. all in one bright, sunlit scene of the vivid budapest downtown - where your body, mind, soul and coolness meet.",
+    "address_string": "kiraly utca 26, budapest 1061 hungary",
+    "website": "http://www.twentysixbudapest.com",
+    "rating": "4.0",
+    "phone": "+36 70 395 6129",
+    "longitude": "19.058748",
+    "latitude": "47.49958",
+    "cuisines": [
+      "mediterranean",
+      "healthy",
+      "middle_eastern",
+      "european",
+      "contemporary"
+    ],
+    "category": "restaurant",
+    "hours": [
+      "Monday: 07:30 - 23:45",
+      "Tuesday: 07:30 - 23:45",
+      "Wednesday: 07:30 - 23:45",
+      "Thursday: 07:30 - 23:45",
+      "Friday: 07:30 - 23:45",
+      "Saturday: 07:30 - 23:45",
+      "Sunday: 07:30 - 23:45"
+    ]
+  },
+  {
+    "name": "fat mama",
+    "description": "we are proud to be the first restaurant in budapest to use bertha in our kitchen. bertha is a charcoal oven that creates a special atmosphere in the restaurant. you feel like participating in a memorable garden party and in the hand of a well trained chef, bertha produces super tasty, crispy food let it be veggies, meat or fish. fat mama eatery is the only restaurant in the city center that has a real smoker pit available 24/7. our smoker pit was provided by the uncrowned king of hungarian bbq, m\u00e1riusz adorj\u00e1nyi. we prepare traditional bbq food in it meaning long hours of preparation at low temperature. the perfectly cooked, soft and juicy slices of meat can be enjoyed in a cool and easy-going environment.",
+    "address_string": "kazinczy utca 24., budapest 1075 hungary",
+    "website": "http://fatmama.hu",
+    "rating": "4.0",
+    "phone": "+36 20 235 1897",
+    "longitude": "19.062798",
+    "latitude": "47.49784",
+    "cuisines": [
+      "bar",
+      "international",
+      "gastropub"
+    ],
+    "category": "restaurant",
+    "hours": [
+      "Monday: 08:00 - 00:00",
+      "Tuesday: 08:00 - 00:00",
+      "Wednesday: 08:00 - 00:00",
+      "Thursday: 08:00 - 00:00",
+      "Friday: 08:00 - 00:00",
+      "Saturday: 08:00 - 00:00",
+      "Sunday: 08:00 - 00:00"
+    ]
+  },
+  {
+    "name": "bamba marha burger bar",
+    "description": null,
+    "address_string": "andrassy ut 46., budapest 1062 hungary",
+    "website": "http://www.bambamarha.hu",
+    "rating": "4.5",
+    "phone": "+36 1 952 2323",
+    "longitude": "19.062704",
+    "latitude": "47.50488",
+    "cuisines": [
+      "american"
+    ],
+    "category": "restaurant",
+    "hours": [
+      "Monday: 11:30 - 22:00",
+      "Tuesday: 11:30 - 22:00",
+      "Wednesday: 11:30 - 22:00",
+      "Thursday: 11:30 - 22:00",
+      "Friday: 11:30 - 22:00",
+      "Saturday: 11:30 - 22:00",
+      "Sunday: 11:30 - 22:00"
+    ]
+  },
+  {
+    "name": "mazel tov",
+    "description": "mazel tov is an open hearted cultural space in the city's center, a streamlined and comforting place focusing on gastronomy in the 7th district, in the middle of the historically jewish quarter. our middle eastern urban garden awaits its quests seven days a week from noon until midnight: mazel tov! ps: please note that our restaurant is not a kosher restaurant. hope to see you soon, mazel tov team",
+    "address_string": "akacfa utca 47., budapest 1073 hungary",
+    "website": "http://mazeltov.hu",
+    "rating": "4.0",
+    "phone": "+36 70 626 4280",
+    "longitude": "19.06584",
+    "latitude": "47.500423",
+    "cuisines": [
+      "mediterranean",
+      "healthy",
+      "middle_eastern",
+      "israeli"
+    ],
+    "category": "restaurant",
+    "hours": [
+      "Monday: 12:00 - 00:00",
+      "Tuesday: 12:00 - 00:00",
+      "Wednesday: 12:00 - 00:00",
+      "Thursday: 12:00 - 00:00",
+      "Friday: 12:00 - 00:00",
+      "Saturday: 12:00 - 00:00",
+      "Sunday: 12:00 - 00:00"
+    ]
+  }
+]
