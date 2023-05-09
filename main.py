@@ -1,10 +1,16 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from add_establishment import add_location
+from get_establishments import get_establishments
+
 app = FastAPI()
 
-class Msg(BaseModel):
-    msg: str
+class Establishment(BaseModel):
+    name: str
+
+class SearchTerm(BaseModel):
+    term: str
 
 
 @app.get("/")
@@ -12,16 +18,21 @@ async def root():
     return {"message": "Hello World. Welcome to FastAPI!"}
 
 
-@app.get("/path")
-async def demo_get():
-    return {"message": "This is /path endpoint, use a post request to transform the text to uppercase"}
+@app.post("/add_establishment/")
+async def add_establishment(establishment: Establishment):
+    result = add_location(establishment.name)
+    print(result)
 
-
-@app.post("/path")
-async def demo_post(inp: Msg):
-    return {"message": inp.msg.upper()}
-
-
-@app.get("/path/{path_id}")
-async def demo_get_path_id(path_id: int):
-    return {"message": f"This is /path/{path_id} endpoint, use post request to retrieve result"}
+    ## You may want to check that details were successfully retrieved before calling add to json:
+    if result:
+        return {"status": "success"}
+    else:
+        return {"status": "failed"}
+    
+@app.post("/search_establishments/")
+async def search_establishments(search_term: SearchTerm):
+    result = get_establishments(search_term.term)
+    if result: 
+        return {"result": result}
+    else:
+        return {"status": "No results found."}
