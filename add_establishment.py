@@ -143,6 +143,7 @@ def get_location_id(search_query, category="restaurants", address="budapest"):  
 
     # Send the request
     response = requests.get(url, headers=headers)
+    print(response)
 
 # Check if response is not empty before extracting the data
     if response.status_code != 200 or "data" not in response.json():
