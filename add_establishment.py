@@ -140,7 +140,7 @@ def get_location_id(search_query, category="restaurants", address="budapest"):  
 
     # Set the request headers
     headers = {"accept": "application/json", "Referer": "http://fastapi-production-d559.up.railway.app"}
-    
+
     # Send the request
     response = requests.get(url, headers=headers)
     print(response.json())
@@ -168,7 +168,7 @@ def get_location_details(location_id: str) -> Dict:
     Returns:
     results (Dict): dictionary containing values for name, description,
         address_string, website, rating, phone, longitude, latitude, cuisines,
-        category, and hours.
+        , and hours.
     """
     url = f"https://api.content.tripadvisor.com/api/v1/location/{location_id}/details?key={TRIPADVISOR_API_KEY}&language=en&fields=name,description,website,rating,phone,longitude,latitude,cuisine,category,hours,address_obj"
     headers = {"accept": "application/json"}
@@ -185,7 +185,6 @@ def get_location_details(location_id: str) -> Dict:
                "longitude": data.get("longitude"),
                "latitude": data.get("latitude"),
                "cuisines": [cuisine.get("name") for cuisine in data.get("cuisine", [])],
-               "category": data.get("category", {}).get("localized_name"),
                "hours": data.get("hours", {}).get("weekday_text")}
 
     return results 
