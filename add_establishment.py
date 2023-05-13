@@ -1,3 +1,5 @@
+from write_to_db import write_establishment_to_supabase
+
 from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent, AgentOutputParser  # noqa: E501
 from langchain.prompts import BaseChatPromptTemplate
 from langchain import SerpAPIWrapper, LLMChain
@@ -11,6 +13,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 SERPAPI_API_KEY = os.environ.get("SERPAPI_API_KEY")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -189,27 +192,27 @@ def get_location_details(location_id: str) -> Dict:
 
     return results 
 
-def write_establishment_to_json_file(new_data: Dict):
-    # Convert all text in the new data to lowercase
-    new_data = {key: value.lower() if isinstance(value, str) else value for key, 
-                value in new_data.items()}
+# def write_establishment_to_json_file(new_data: Dict):
+#     # Convert all text in the new data to lowercase
+#     new_data = {key: value.lower() if isinstance(value, str) else value for key, 
+#                 value in new_data.items()}
 
-    # Load existing data (if any)
-    try:
-        with open('stores.json', 'r') as f:
-            data = json.load(f)
-    except json.JSONDecodeError:
-        # If the file doesn't exist yet, start with an empty list
-        data = []
+#     # Load existing data (if any)
+#     try:
+#         with open('stores.json', 'r') as f:
+#             data = json.load(f)
+#     except json.JSONDecodeError:
+#         # If the file doesn't exist yet, start with an empty list
+#         data = []
 
-    # Append the new item to the list
-    data.append(new_data)
+#     # Append the new item to the list
+#     data.append(new_data)
 
-    # Write the updated data (with indentation)
-    with open('stores.json', 'w') as f:
-        json.dump(data, f, indent=2)
+#     # Write the updated data (with indentation)
+#     with open('stores.json', 'w') as f:
+#         json.dump(data, f, indent=2)
 
-    print('Data successfully updated')
+#     print('Data successfully updated')
 
 def add_location(user_input:str):
     name = get_location_name(user_input)
@@ -218,5 +221,5 @@ def add_location(user_input:str):
     print(f"ID retrieved - {location_id}")
     location_details = get_location_details(location_id)
     print("Details retrieved")
-    write_establishment_to_json_file(location_details)
+    write_establishment_to_supabase(location_details)
     return True
