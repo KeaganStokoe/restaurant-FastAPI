@@ -146,7 +146,6 @@ def get_location_id(search_query, category="restaurants", address="budapest"):  
 
     # Send the request
     response = requests.get(url, headers=headers)
-    print(response.json())
 
 # Check if response is not empty before extracting the data
     if response.status_code != 200 or "data" not in response.json():
@@ -177,42 +176,21 @@ def get_location_details(location_id: str) -> Dict:
     headers = {"accept": "application/json"}
     response = requests.get(url, headers=headers)
     data = response.json()
+    print(data)
 
     # Extract required fields from data
     results = {"name": data.get("name"),
                "description": data.get("description"),
-               "address_string": data.get("address_obj", {}).get("address_string"),
+               "address": data.get("address_obj", {}).get("address_string"),
                "website": data.get("website"),
                "rating": data.get("rating"),
                "phone": data.get("phone"),
                "longitude": data.get("longitude"),
                "latitude": data.get("latitude"),
                "cuisines": [cuisine.get("name") for cuisine in data.get("cuisine", [])],
-               "hours": data.get("hours", {}).get("weekday_text")}
+               "opening_hours": data.get("hours", {}).get("weekday_text")}
 
     return results 
-
-# def write_establishment_to_json_file(new_data: Dict):
-#     # Convert all text in the new data to lowercase
-#     new_data = {key: value.lower() if isinstance(value, str) else value for key, 
-#                 value in new_data.items()}
-
-#     # Load existing data (if any)
-#     try:
-#         with open('stores.json', 'r') as f:
-#             data = json.load(f)
-#     except json.JSONDecodeError:
-#         # If the file doesn't exist yet, start with an empty list
-#         data = []
-
-#     # Append the new item to the list
-#     data.append(new_data)
-
-#     # Write the updated data (with indentation)
-#     with open('stores.json', 'w') as f:
-#         json.dump(data, f, indent=2)
-
-#     print('Data successfully updated')
 
 def add_location(user_input:str):
     name = get_location_name(user_input)

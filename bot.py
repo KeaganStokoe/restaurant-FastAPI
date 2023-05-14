@@ -35,6 +35,7 @@ def add_establishment_process_step(message):
             print(f"An error occurred: {response.json()}")
     except Exception as e:
         # Send an error message back to the user
+        print('error:', e)
         bot.reply_to(message, "Oops! 🙊 Something went wrong when I tried adding this restaurant. Try again later?")
         # Print the error message to the console for debugging
         print(f"An error occurred while adding {establishment_name}: {e}")
