@@ -141,7 +141,7 @@ def get_location_id(search_query, category="restaurants", address="budapest"):  
     url = f"https://api.content.tripadvisor.com/api/v1/location/search?key={TRIPADVISOR_API_KEY}&searchQuery={search_query}&category={category}&address={address}&language=en"  # noqa: E501
 
     # Set the request headers
-    headers = {"accept": "application/json", "Referer": "http://fastapi-production-d559.up.railway.app/add_establishment"}
+    headers = {"accept": "application/json", "Referer": "fastapi-production-d559.up.railway.app"}
 
     # Send the request
     response = requests.get(url, headers=headers)
