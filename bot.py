@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from os import getenv
 import requests
 
+from add_establishment import add_location
+
 # Load environmental variables
 load_dotenv()
 
