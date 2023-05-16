@@ -164,3 +164,4 @@ cython_debug/
 notes.txt
 
 test.py
+test_fetch_details.py
