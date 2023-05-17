@@ -1,23 +1,11 @@
 from write_to_db import write_establishment_to_supabase
-
-from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent, AgentOutputParser  # noqa: E501
-from langchain.prompts import BaseChatPromptTemplate
-from langchain import SerpAPIWrapper, LLMChain
 from langchain.tools import GooglePlacesTool
-from typing import List, Union, Dict
-from langchain.schema import AgentAction, AgentFinish, HumanMessage
-from langchain.chat_models import ChatOpenAI
-import re
-import requests
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-
-SERPAPI_API_KEY = os.environ.get("SERPAPI_API_KEY")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-TRIPADVISOR_API_KEY = os.getenv("TRIPADVISOR_API_KEY")
 GPLACES_API_KEY = os.environ.get("GPLACES_API_KEY")
 
 def add_location(query):
@@ -29,6 +17,7 @@ def add_location(query):
 
     # Write the dictionary data to the database
     write_establishment_to_supabase(result_dict)
+    return True
 
 def process_result_string(result_string):
     # Split the result string into lines
@@ -42,11 +31,23 @@ def process_result_string(result_string):
     website = ":".join(website_parts).strip()  # Join website parts with colons
 
     # Extract the opening hours as a list of strings
-    opening_hours = lines[4].split(":")[1:]
-    opening_hours = [oh.strip() for oh in opening_hours]
+    try:
+        opening_hours = lines[4].split(":")[1:]
+        opening_hours = [oh.strip() for oh in opening_hours]
+    except IndexError:
+        opening_hours = "Unknown"
 
-    rating = float(lines[5].split(":")[1].strip())
-    description = lines[6].split(":")[1].strip()
+    # Extract the rating as a float value
+    try:
+        rating = float(lines[5].split(":")[1].strip())
+    except (IndexError, ValueError):
+        rating = "Unknown"
+
+    # Extract the description as a string
+    try:
+        description = lines[6].split(":")[1].strip()
+    except IndexError:
+        description = "Unknown"
 
     # Create a dictionary with the extracted data
     result_dict = {
