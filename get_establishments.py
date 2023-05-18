@@ -36,18 +36,14 @@ def get_establishments(user_input: str) -> str:
             # search the name using user input
             name = row.get('name', '-')
             description = row.get('description', '-')
-            cuisines = row.get('cuisines', '-')
-            if user_input.lower() in name.lower() or user_input in description.lower() or user_input in cuisines:
+            if user_input.lower() in name.lower() or user_input in description.lower():
                 # formatting the name
                 formatted_name = ' '.join(word.capitalize() for word in name.split())
                 # Collecting details
                 description = row.get('description', '-')
-                cuisine = ', '.join(row.get('cuisines', [])) or '-'
                 website = row.get('website', '-')
-                opening_hours = row.get('opening_hours', {}) or {}
-                days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                 # prepare and append search results
-                search_result = f"{i+1}. {formatted_name}\n📝 Description: {description}\n🍽️  Cuisine: {cuisine.capitalize()}\n👾 Website: {website}\n"
+                search_result = f"{formatted_name}\n📝 Description: {description}\n🍽️  \n👾 Website: {website}\n"
                 search_results.append(search_result)
         # fix the indentation of else statement
         final_string = "\n\n".join(search_results)
