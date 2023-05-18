@@ -1,5 +1,6 @@
 from write_to_db import write_establishment_to_supabase
 from langchain.tools import GooglePlacesTool
+from langchain.tools import DuckDuckGoSearchRun
 import os
 from dotenv import load_dotenv
 
@@ -11,15 +12,21 @@ GPLACES_API_KEY = os.environ.get("GPLACES_API_KEY")
 def add_location(query):
     places = GooglePlacesTool()
     result = places.run(query)
+    description = get_location_description(query)
 
     # Process the result string into a dictionary
-    result_dict = process_result_string(result)
+    result_dict = process_result_string(result, description)
 
     # Write the dictionary data to the database
     write_establishment_to_supabase(result_dict)
     return True
 
-def process_result_string(result_string):
+def get_location_description(establishment_name):
+    search = DuckDuckGoSearchRun()
+    description = search.run(f"{establishment_name} budapest description")
+    return description
+
+def process_result_string(result_string, description):
     # Split the result string into lines
     lines = result_string.strip().split("\n")
 
@@ -30,34 +37,13 @@ def process_result_string(result_string):
     website_parts = lines[3].split(":")[1:]  # Join all parts after the colon
     website = ":".join(website_parts).strip()  # Join website parts with colons
 
-    # Extract the opening hours as a list of strings
-    try:
-        opening_hours = lines[4].split(":")[1:]
-        opening_hours = [oh.strip() for oh in opening_hours]
-    except IndexError:
-        opening_hours = "Unknown"
-
-    # Extract the rating as a float value
-    try:
-        rating = float(lines[5].split(":")[1].strip())
-    except (IndexError, ValueError):
-        rating = "Unknown"
-
-    # Extract the description as a string
-    try:
-        description = lines[6].split(":")[1].strip()
-    except IndexError:
-        description = "Unknown"
-
     # Create a dictionary with the extracted data
     result_dict = {
         "name": name,
+        "description": description,
         "address": address,
         "phone": phone,
         "website": website,
-        "opening_hours": opening_hours,
-        "rating": rating,
-        "description": description
     }
 
     return result_dict
